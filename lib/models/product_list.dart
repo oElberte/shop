@@ -5,7 +5,7 @@ import 'package:shop/models/product.dart';
 class ProductList with ChangeNotifier {
   final List<Product> _items = dummyProducts;
 
-  //[..._items clone the list of items]
+  //[..._items] clone the list of items
   List<Product> get items => [..._items];
 
   void addProduct(Product product) {
