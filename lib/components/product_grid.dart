@@ -18,6 +18,8 @@ class ProductGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: loadedProducts.length,
+
+      //This ChangeNotifierProvider render the ProductItem when the loadedProducts is updated or changed
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
         value: loadedProducts[i],
         child: const ProductItem(),

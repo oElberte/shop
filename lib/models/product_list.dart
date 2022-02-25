@@ -7,6 +7,7 @@ class ProductList with ChangeNotifier {
 
   //[..._items] clone the list of items
   List<Product> get items => [..._items];
+
   List<Product> get favoriteItems =>
       _items.where((prod) => prod.isFavorite).toList();
 
