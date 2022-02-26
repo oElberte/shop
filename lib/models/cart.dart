@@ -21,7 +21,7 @@ class Cart with ChangeNotifier {
     return total;
   }
 
-  //When the user tries to add one item that is already in the cart, this method increases the amount of items in the cart in 1, instead of replacing
+  //This method filter if the product is already in the cart, if it is, add one more item in the total quantity instead of replacing it
   void addItem(Product product) {
     if (_items.containsKey(product.id)) {
       _items.update(
