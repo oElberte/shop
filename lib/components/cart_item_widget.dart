@@ -66,6 +66,7 @@ class CartItemWidget extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
+            backgroundColor: Colors.transparent,
             backgroundImage: NetworkImage(cartItem.imageUrl),
             child: Padding(
               padding: const EdgeInsets.all(5),

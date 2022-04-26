@@ -8,7 +8,7 @@ import 'package:shop/utils/app_routes.dart';
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({Key? key}) : super(key: key);
 
-  //This method is the pull to refresh in the product management, it makes the itens list on product management individual
+  //This method is the pull to refresh in the product management
   Future<void> _refreshProducts(BuildContext context) {
     return Provider.of<ProductList>(
       context,
