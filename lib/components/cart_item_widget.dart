@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/models/cart.dart';
 import 'package:shop/models/cart_item.dart';
@@ -13,6 +14,8 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currency = NumberFormat("#,##0.00", "en_US");
+
     return Dismissible(
       key: ValueKey(cartItem.id),
       direction: DismissDirection.endToStart,
@@ -86,7 +89,8 @@ class CartItemWidget extends StatelessWidget {
             ),
           ),
           title: Text(cartItem.name),
-          subtitle: Text('Total: \$${cartItem.price * cartItem.quantity}'),
+          subtitle: Text(
+              'Total: \$${currency.format(cartItem.price * cartItem.quantity)}'),
           trailing: Text('${cartItem.quantity}x'),
         ),
       ),

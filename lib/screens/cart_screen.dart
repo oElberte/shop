@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/components/cart_item_widget.dart';
 import 'package:shop/models/cart.dart';
@@ -11,6 +12,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Cart cart = Provider.of(context);
     final items = cart.items.values.toList();
+    final currency = NumberFormat("#,##0.00", "en_US");
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +40,7 @@ class CartScreen extends StatelessWidget {
                   Chip(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     label: Text(
-                      '\$${cart.totalAmount.toStringAsFixed(2)}',
+                      '\$${currency.format(cart.totalAmount)}',
                       style: TextStyle(
                         color:
                             Theme.of(context).primaryTextTheme.headline6?.color,

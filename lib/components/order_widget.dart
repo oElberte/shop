@@ -15,6 +15,7 @@ class OrderWidget extends StatefulWidget {
 
 class _OrderWidgetState extends State<OrderWidget> {
   bool _expanded = false;
+  final currency = NumberFormat("#,##0.00", "en_US");
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class _OrderWidgetState extends State<OrderWidget> {
       child: Column(
         children: [
           ListTile(
-            title: Text('R\$ ${widget.order.total.toStringAsFixed(2)}'),
+            title: Text('\$${currency.format(widget.order.total)}'),
             subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm a').format(widget.order.date),
             ),
@@ -49,14 +50,16 @@ class _OrderWidgetState extends State<OrderWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          product.name,
+                          product.name.length >= 26
+                              ? product.name.substring(0, 26) + '...'
+                              : product.name,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          '${product.quantity}x R\$ ${product.price}',
+                          '${product.quantity}x \$${currency.format(product.price)}',
                           style: const TextStyle(
                             fontSize: 18,
                             color: Colors.grey,

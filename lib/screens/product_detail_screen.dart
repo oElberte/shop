@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shop/models/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currency = NumberFormat("#,##0.00", "en_US");
     final Product product =
         ModalRoute.of(context)?.settings.arguments as Product;
     return Scaffold(
@@ -25,7 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'R\$ ${product.price}',
+              '\$ ${currency.format(product.price)}',
               style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 20,
